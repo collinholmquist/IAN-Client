@@ -1,0 +1,38 @@
+
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    
+    
+    <div class = "form-group">
+        <label for="role">User Role</label>
+            <select  formControlName="role">
+              <option *ngFor="let userRole of roles" [ngValue]="userRole">{{userRole}}</option>
+            </select>
+    </div>
+    
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input  type="text" formControlName="name">
+      <div *ngIf="!userForm.controls.name.valid && !userForm.controls.name.pristine" class="alert alert-danger">
+        <span *ngIf="userForm.controls.name.errors.required">
+          Name is required
+        </span>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="text" formControlName="password">
+      <div *ngIf="!userForm.controls.password.valid && !userForm.controls.password.pristine" class="alert alert-danger">
+        <span *ngIf="userForm.controls.password.errors.required">
+          Password is required
+        </span>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-default btn-primary" [disabled]="!userForm.valid">Register</button>
+</form>
+
+  {{userForm.value | json}}
+  
+  
+
