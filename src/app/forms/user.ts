@@ -1,6 +1,5 @@
-//export class User{
+export interface User{
 
-    //role: string;
-    //name: string;
-    //password: string;
-//}
+    name: string;
+    password: string;
+}
